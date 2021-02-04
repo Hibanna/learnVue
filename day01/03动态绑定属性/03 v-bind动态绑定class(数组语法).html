@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2 :class="[className1,className2]"></h2>
+    <h2 :class="getClass()"></h2>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello simner!",
+      className1: "color",
+      className2: "line"
+    },
+    methods: {
+      getClass() {
+        return [this.className1,this.className2];
+      }
+    }
+  });
+</script>
+</body>
+</html>

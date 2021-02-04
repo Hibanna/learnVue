@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red {
+            color:palegreen;
+        }
+    </style>
+</head>
+<body>
+<!--作业需求: 点击列表中的哪一项, 那么该项的文字变成红色-->
+<div id="app">
+    <ul>
+       <!-- <li v-for="(item, index) in movies" :class="{red:current===index}" @click="liClick(index)"> {{index}}-{{item}}</li>-->
+        <!--另外一种实现方式-->
+         <li v-for="(item, index) in movies" :class="getClass(index)" @click="liClick(index)"> {{index}}-{{item}}</li>
+    </ul>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      current:0,
+      movies: ['海王', '海尔兄弟', '火影忍者', '进击的巨人']
+    },
+    methods : {
+      liClick(index) {
+        this.current = index;
+        console.log(index);
+      },
+      getClass(index) {
+        return {red:this.current===index};
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <img v-bind:src="imgURL">
+    <a v-bind:href="aHref">点我</a>
+    <!--语法糖-->
+    <img :src="imgURL">
+    <a :href="aHref">点我</a>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      imgURL: 'https://img11.360buyimg.com/mobilecms/s350x250_jfs/t1/20559/1/1424/73138/5c125595E3cbaa3c8/74fc2f84e53a9c23.jpg!q90!cc_350x250.webp',
+      aHref: 'http://www.baidu.com',
+      message: "hello simner!"
+    }
+  });
+</script>
+</body>
+</html>

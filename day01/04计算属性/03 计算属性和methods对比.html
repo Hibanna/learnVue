@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{getFullMessage()}}</h2>
+    <h2>{{getFullMessage()}}</h2>
+    <h2>{{getFullMessage()}}</h2>
+    <h2>{{getFullMessage()}}</h2>
+
+    <h2>{{fullMessage}}</h2>
+    <h2>{{fullMessage}}</h2>
+    <h2>{{fullMessage}}</h2>
+    <h2>{{fullMessage}}</h2>
+    <!-- 从上面执行的结果来看 vue 只要遇到methods就会重新执行一遍 而computed只会执行一次(而且在数据发生改变的时候（例如app.name="kobe"）会重新执行并不影响结果) computed会缓存 -->
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      name: "simner",
+      message: "hello"
+    },
+    methods: {
+      getFullMessage() {
+        console.log("getFullMessage 执行了！");
+        return this.message + " " + this.name;
+      }
+    },
+    computed: {
+      fullMessage() {
+        console.log("fullMessage 执行了！");
+        return this.message + " " + this.name;
+      }
+    }
+  });
+</script>
+</body>
+</html>
