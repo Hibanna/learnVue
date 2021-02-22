@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--这种情况会产生事件冒泡-->
+    <div @click="divClick">
+        <button @click="btnClick">点击1</button>
+    </div>
+    <!--阻止事件冒泡-->
+    <div @click="divClick">
+        <button @click.stop="btnClick">点击2</button>
+    </div>
+   <!-- 这种情况会点击的时候 提交表单-->
+    <form action="baidu">
+        <input type="submit" value="提交" @click="submitClick">
+    </form>
+    <!-- 如果我们点击之后不想提交表单 用prevent-->
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+    },
+    methods: {
+      divClick() {
+        console.log("div");
+      },
+      btnClick() {
+        console.log("btn");
+      },
+      submitClick() {
+        console.log("submit");
+      }
+    }
+  });
+</script>
+</body>
+</html>
