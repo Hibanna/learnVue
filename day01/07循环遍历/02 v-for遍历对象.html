@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myApp">
+    <p v-for="value in person">{{value}}</p>
+    <p v-for="(value,key) in person">{{value}} - {{key}}</p>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const myApp = new Vue({
+    el:"#myApp",
+    data: {
+      person:{
+        name: 'kobe',
+        age: 18
+      }
+    },
+  });
+</script>
+</body>
+</html>

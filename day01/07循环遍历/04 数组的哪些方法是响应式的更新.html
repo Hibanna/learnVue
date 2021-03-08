@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myApp">
+    <ul>
+        <li v-for="item in names">{{item}}</li>
+    </ul>
+    <button @click="addEle">+</button>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const myApp = new Vue({
+    el:"#myApp",
+    data: {
+      names: ['a','c','b','d']
+    },
+    methods: {
+      addEle() {
+        /*数组的push 方法 push 方法可以响应式更新*/
+        /*this.names.push('e','f');*/
+        /*数组的pop方法 删除数组的最后一个元素 pop方法可以响应式更新*/
+        /*this.names.pop();*/
+        /*数组的shift方法 删除数组的第一个元素 shift方法可以响应式更新*/
+        /*this.names.shift();*/
+        /*数组的unshift方法 在数组的前面添加元素 unshift 方法可以响应式更新*/
+        /*this.names.unshift();
+        this.names.unshift('a');*/
+        /*数组的splice方法:删除元素/插入元素/替换元素 第一个位置为从哪个数组下标开始操作 splice 可以响应式更新*/
+        /*删除元素: 第二个元素传入要删除第几个元素 如果不传入，就删除后面所有的元素*/
+        /*this.names.splice(0,2);*/
+        /*替换元素:第二个参数表示我们要替换多少个元素,第三个参数是用来替换的元素 如果替换的元素多于第二个参数 则多余的元素添加到数组后面*/
+        /*this.names.splice(1,3,'n','m','l','x');*/
+        /*插入元素: 第二个参数, 传入0, 并且第三个参数跟上要插入的元素*/
+        /*this.names.splice(1,0,'ag','cf');*/
+        /*sort() 方法 可以响应式更新*/
+        /*this.names.sort();*/
+        /*reverse() 方法 可以响应式更新*/
+        /*this.names.reverse()*/
+        /*通过索引值修改数组的元素 不可以做到响应式更新*/
+        /*this.names[2] = 'sss';*/
+        /*通过splice 方法修改数组的元素 可以做到响应式更新*/
+        /*this.names.splice(1,2,'s1','s2');*/
+        /*通过Vue对象set方法更新数据的值 可以做到响应式更新*/
+        Vue.set(this.names,0,'aaaaaaa');
+      }
+    }
+  });
+</script>
+</body>
+</html>

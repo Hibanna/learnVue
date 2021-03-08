@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myApp">
+    <p v-for="name in arrs">{{name}}</p>
+    <p v-for="(name, index) in arrs">{{index}} - {{name}}</p>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const myApp = new Vue( {
+    el:"#myApp",
+    data: {
+      arrs:['a','b','c']
+    },
+  });
+</script>
+
+</body>
+</html>
