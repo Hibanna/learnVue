@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox"  v-model="isAgree"/> 我同意
+    <button :disabled="!isAgree">下一步</button>
+    <input type="checkbox"  value="篮球" v-model="hobbies"/> 篮球
+    <input type="checkbox"  value="足球" v-model="hobbies"/> 足球
+    <input type="checkbox"  value="羽毛球" v-model="hobbies"/> 羽毛球
+    <h2>{{hobbies}}</h2><br/>
+    <label v-for="item in origin" >
+    <input :value="item" v-model="hobbies" type="checkbox">{{item}}
+    </label>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      isAgree: false,
+      hobbies: [],
+      origin:["篮球","足球","羽毛球"]
+    }
+  });
+</script>
+</body>
+</html>
