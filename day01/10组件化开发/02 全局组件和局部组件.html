@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myApp1">
+    <mycom></mycom>
+</div>
+<div id="myApp2">
+    <mycom></mycom>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  /*1.创建组件*/
+  const com = Vue.extend({
+    template:`
+       <div>
+        <h2>我是标题</h2>
+        <p>我是内容, 哈哈哈哈</p>
+        <p>我是内容, 呵呵呵呵</p>
+      </div>
+    `
+  }) ;
+  /*2.注册全局组件app1 app2*/
+ /* Vue.component("mycom",com);*/
+  const myApp1 = new Vue({
+    el:"#myApp1",
+    data: {
+      name:"test"
+    },
+    /*此组件仅在app1的作用域下生效*/
+    components: {
+      mycom:com
+    }
+  });
+  const myApp2 = new Vue({
+    el:"#myApp2",
+    data: {
+      name:"test"
+    }
+  });
+</script>
+</body>
+</html>
