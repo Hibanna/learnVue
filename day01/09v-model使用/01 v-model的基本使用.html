@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message[0]"/>
+    {{message[0]}}
+    <input type="text" v-model="message[1]"/>
+    {{message[1]}}
+<!--    <input type="text" v-model="message.in2"/>
+    {{message.in2}}-->
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      name: ["张三", "李四", "王五"],
+      message: []
+    }
+  });
+</script>
+</body>
+</html>
