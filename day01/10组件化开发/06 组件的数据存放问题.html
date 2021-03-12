@@ -9,16 +9,18 @@
     <com1></com1>
     <com2></com2>
 </div>
-<!--将模板抽离开来-->
+<!--组件中访问数据 不能直接访问vue实例的data数据 每个组件都有自己的保存数据的位置data()函数返回的对象-->
 <!--1.用script标签 类型是text/x-template-->
 <script type="text/x-template" id="cpn1">
     <div>
+        <h2>{{title}}</h2>
         <h2>script 标签</h2>
     </div>
 </script>
 <!--2.用template标签-->
 <template id="cpn2">
     <div>
+        <h2>{{title}}</h2>
         <h2>template 标签</h2>
     </div>
 </template>
@@ -31,10 +33,20 @@
     },
     components: {
       com1: {
-        template:"#cpn1"
+        template:"#cpn1",
+        data() {
+            return {
+              title:"com1标题"
+            }
+        }
       },
       com2: {
-        template:"#cpn2"
+        template:"#cpn2",
+        data() {
+          return {
+            title:"com2标题"
+          }
+        }
       }
     }
   });
