@@ -5,14 +5,51 @@
     <title>Title</title>
 </head>
 <body>
-<div id="myApp"></div>
+<div id="myApp">
+    <cpn2></cpn2>
+    <!--cp1不可用只能在直接父级里用 以下两种方法都不对-->
+    <!--<cpn2><cpn1></cpn1></cpn2>
+    <cpn1></cpn1>-->
+</div>
 <script src="../../js/vue.js"></script>
 <script>
+  /*1.创建一个组件com1*/
+  const com1 = Vue.extend({
+    template: `
+    <div>
+        <h2>我是com1</h2>
+        <p>我是内容, 哈哈哈哈</p>
+        <p>我是内容, 呵呵呵呵</p>
+
+      </div>
+    `
+  });
+  /*2.创建一个组件com2 并将com1 设置到com2的components的对象中 使com1成为com2的子组件*/
+  const com2 = Vue.extend({
+    template: `
+    <div>
+        <h2>我是com2</h2>
+        <p>我是内容, 哈哈哈哈</p>
+        <p>我是内容, 呵呵呵呵</p>
+       <!-- 因为当子组件注册到父组件的components时，Vue会编译好父组件的模块
+        该模板的内容已经决定了父组件将要渲染的HTML（相当于父组件中已经有了子组件中的内容了）
+        <cpn1></cpn1是只能在父组件中被识别的-->
+        <cpn1></cpn1>
+      </div>
+    `,
+    components: {
+      cpn1:com1
+    }
+  });
+  /*3.将com2注册到vue实例当中*/
   const myApp = new Vue({
     el:"#myApp",
     data: {
-      name:"test"
+
     },
+    components: {
+      cpn2:com2
+    }
   });
 </script>
 </body>

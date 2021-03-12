@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myApp">
+<com1></com1>
+    <com2>11</com2>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  /*其实就是传入一个匿名对象*/
+  Vue.component("com1", {
+    template:`
+    <h2>com1</h2>
+    `
+  });
+  const myApp = new Vue({
+    el:"#myApp",
+    data: {
+    },
+    components: {
+      com2: {
+        template:`
+            <h2>com2</h2>
+        `
+      }
+    }
+  });
+</script>
+</body>
+</html>
