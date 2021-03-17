@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    错误的做法 v-bind 无法识别驼峰-->
+    <cpn :cMessage="message" :cInfo="info"></cpn>
+    <!--    正确的做法  如下-->
+    <!--<cpn :c-message="message" :c-info="info"></cpn>-->
+</div>
+<script src="../../js/vue.js"></script>
+<template id="cpn">
+<div>
+    <h2>{{cMessage}}</h2>
+    <h2>{{cInfo}}</h2>
+</div>
+</template>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello simner!",
+      info: {
+        name:"张三",
+        age:18
+      }
+    },
+    components : {
+      cpn : {
+        template : "#cpn",
+        props : {
+          cMessage: {
+            type : String,
+            default : "啊啊啊 我是默认的"
+          },
+          cInfo : {
+            type : Object,
+            default() {
+              return {};
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -6,23 +6,51 @@
 </head>
 <body>
 <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
 </div>
 <script src="../../js/vue.js"></script>
+
 <script>
+  const obj  = {
+    count:0
+  }
   const com1 = Vue.extend({
     template:`
     <div>
-       <button @click="">+</button>
-       <button>-</button>
+        <h2>当前计数:{{count}}</h2>
+       <button @click="add">+</button>
+       <button @click="sub">-</button>
     </div>
-    `
+    `,
+/*    data: function() {
+      return {
+        count:0
+      }
+    },*/
+    data() {
+      return obj;
+    },
+    methods: {
+      add() {
+        this.count++;
+    },
+      sub() {
+        this.count--;
+      }
+  }
   });
   const app = new Vue({
     el: "#app",
     data: {
       message: "hello simner!"
+    },
+    components: {
+      cpn:com1
     }
   });
+
 </script>
 </body>
 </html>
