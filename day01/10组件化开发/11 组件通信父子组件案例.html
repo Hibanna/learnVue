@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :number1= "pnumber1"@btn1-Click = "pClick1"></cpn>
+</div>
+<template id="cpn">
+    <div>
+        <h2>props:{{number1}}</h2>
+        <h2>data:{{cNumber1}}</h2>
+        <input type="text" v-model="cNumber1" @input="click1">
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      pnumber1: '1',
+      message: "hello simner!"
+    },
+    components : {
+      cpn : {
+        template : "#cpn",
+        props : {
+          number1 : {
+            type: String
+          }
+        },
+        data() {
+          return {
+            cNumber1 : 1
+          }
+        },
+        methods : {
+          click1() {
+           /* 注意下写法 下面是错误的 v-on 属于html标签内 是不区分大小写的 所以 @btn1-Click = "pClick1" 实际上绑定的是@btn1-click 但是 JS代码是区分大小写的 所以发射事件名称时 要小写*/
+/*            Event "btn1-click" is emitted in component <Cpn> but the handler is registered for "btn1-Click". Note that HTML attributes are case-insensitive and you cannot use v-on to listen to camelCase events when using in-DOM templates. You should probably use "btn1-click" instead of "btn1-Click".
+            <cpn :number1= "pnumber1"@btn1-Click = "pClick1"></cpn>
+            this.$emit("btn1-Click",data);*/
+            this.$emit("btn1-click",this.cNumber1);
+          }
+        }
+      }
+    },
+    methods:  {
+      pClick1(data) {
+        this.pnumber1 = data;
+      }
+    }
+  });
+</script>
+</body>
+</html>

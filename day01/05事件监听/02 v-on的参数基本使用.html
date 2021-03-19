@@ -8,12 +8,12 @@
 <div id="app">
    <!-- 如果绑定的方法没有写括弧 则默认传入event对象 如果有写括号 则参数会变为undefined-->
     <button @click="btnClick1">点击1</button>
-    <button @click="btnClick1()">点击2</button>
+    <button @click="btnClick1()">点击1</button>
     <!-- 如果绑定的方法没有写括弧 则默认传入event对象 如果有写括号 则参数会变为undefined-->
-    <button @click="btnClick2(123)">点击3</button>
+    <button @click="btnClick2(123)">点击2</button>
     <!--3.方法定义时, 我们需要event对象, 同时又需要其他参数-->
     <!-- 在调用方式, 如何手动的获取到浏览器参数的event对象: $event-->
-    <button @click="btnClick3(abc, $event)">点击4</button>
+    <button @click="btnClick3('abc', $event)">点击3</button>
 </div>
 <script src="../../js/vue.js"></script>
 <script>
@@ -30,6 +30,7 @@
       btnClick2(data) {
         console.log(arguments[0]);
         console.log(data);
+        console.log(typeof (data));
       },
       btnClick3(data,event) {
         console.log(data);

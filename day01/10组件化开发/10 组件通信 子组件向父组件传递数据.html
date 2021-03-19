@@ -8,7 +8,9 @@
 <!--父组件-->
 <div id="app">
     <!--父组件接受事件并绑定自己的事件-->
-    <cpn @my-click="accept(data)"></cpn>
+    <cpn @my-click="accept"></cpn>
+<!--     以下是错误写法
+    <cpn @my-click="accept(data)"></cpn>-->
 </div>
 <!--子组件-->
 <template id="cpn">

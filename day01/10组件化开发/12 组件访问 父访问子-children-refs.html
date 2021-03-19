@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1></cpn1>
+    <cpn1></cpn1>
+    <cpn1></cpn1>
+    <mycpn></mycpn>
+    <button @click="btnClick">测试</button>
+</div>
+<template id="cpn1">
+    <div>
+        <div>我是子组件1</div>
+    </div>
+</template>
+<template id="cpn2">
+    <div>
+        <div>我是子组件2</div>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      name: ["张三", "李四", "王五"],
+      message: "hello simner!"
+    },
+    components : {
+      cpn1 : {
+        template : "#cpn1"
+      },
+      mycpn : {
+        template : "#cpn2"
+      }
+    },
+    methods : {
+      btnClick() {
+        console.log(this.$children);
+        for (let c of this.$children) {
+          console.log(c.name);
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

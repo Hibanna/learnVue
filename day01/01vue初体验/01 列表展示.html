@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,8 @@
     <title>Title</title>
 </head>
 <body>
-<div class="app">
-    <h2>{{message}}</h2>
-    <ul>
-        <li v-for="item in name">{{item}}</li>
-    </ul>
-</div>
-<div class="app">
-    <h2>{{message}}</h2>
+<div id="app">
+    <h2>{{message.mes}}</h2>
     <ul>
         <li v-for="item in name">{{item}}</li>
     </ul>
@@ -20,10 +15,43 @@
 <script src="../../js/vue.js"></script>
 <script>
   const app = new Vue({
-    el: ".app",
+    el: "#app",
     data: {
       name: ["张三", "李四", "王五"],
-      message: "hello simner!"
+      message: {mes :"hello simner!"},
+      obj :[]
+    },
+    mounted() {
+      this.obj.push(this.name);
+      this.obj.push(this.message);
+    }
+  });
+</script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{obj[1].mes}}</h2>
+    <ul>
+        <li v-for="item in obj[0]">{{item}}</li>
+    </ul>
+    <input type="text"v-model="obj[1].mes" >
+    <input type="text"v-model="obj[0][0]" >
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+
+      obj :[["张三", "李四", "王五"],{mes :"hello simner!"}]
     }
   });
 </script>
