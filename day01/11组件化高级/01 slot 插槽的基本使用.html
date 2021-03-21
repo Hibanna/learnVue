@@ -6,7 +6,22 @@
 </head>
 <body>
 <div id="app">
+    <!--
+1.插槽的基本使用 <slot></slot>
+2.插槽的默认值 <slot><button>按钮</button></slot>
+3.如果有多个值, 同时放入到组件进行替换时, 一起作为替换元素
+-->
+    <mycpn>哈哈</mycpn>
+    <mycpn><button>按钮</button></mycpn>
+    <mycpn></mycpn>
+    <mycpn><button>按钮1</button><button>按钮2</button></mycpn>
 </div>
+<template id="mycpn">
+    <div>
+        <h2> 我是组件</h2>
+        <slot><h2>我是插槽</h2></slot>
+    </div>
+</template>
 <script src="../../js/vue.js"></script>
 <script>
   const app = new Vue({
@@ -14,6 +29,11 @@
     data: {
       name: ["张三", "李四", "王五"],
       message: "hello simner!"
+    },
+    components : {
+      mycpn : {
+        template : "#mycpn"
+      }
     }
   });
 </script>

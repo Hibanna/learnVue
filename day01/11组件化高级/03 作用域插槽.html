@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父组件替换插槽的标签，但是内容由子组件来提供。-->
+<!--我们先提一个需求：
+子组件中包括一组数据，比如：pLanguages: ['JavaScript', 'Python', 'Swift', 'Go', 'C++']
+需要在多个界面进行展示：
+某些界面是以水平方向一一展示的，
+某些界面是以列表形式展示的，
+某些界面直接展示一个数组
+内容在子组件，希望父组件告诉我们如何展示，怎么办呢？
+利用slot作用域插槽就可以了-->
+
+<div id="myApp">
+    <mycpn></mycpn>
+    <mycpn>
+        <template slot-scope="com">
+            <span>{{com.data.join(",")}}</span>
+    </template>
+    </mycpn>
+</div>
+<template id="cpn">
+    <div>
+        <slot :data="pLanguages">
+            <ul>
+                <li v-for="item in pLanguages">
+                    {{item}}
+                </li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+  const myApp = new Vue({
+    el:"#myApp",
+    data: {
+      name:"test"
+    },
+    components : {
+      mycpn : {
+        template  : "#cpn",
+        data() {
+          return {
+            pLanguages: ['JavaScript', 'Python', 'Swift', 'Go', 'C++']
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

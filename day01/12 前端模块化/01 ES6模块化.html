@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="part1.js" type="module"></script>
+<script src="part2.js" type="module"></script>
+<script src="main.js" type="module"></script>
+<script src="../../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      name: ["张三", "李四", "王五"],
+      message: "hello simner!"
+    }
+  });
+</script>
+</body>
+</html>

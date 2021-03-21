@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myApp">
+    <cpn></cpn>
+</div>
+<template id="cpn">
+    <div>
+        <button @click="btnclick1">子组件点击按钮</button>
+        <cpn1></cpn1>
+    </div>
+</template>
+<template id="cpn1">
+    <div>
+        <button @click="btnclick1">孙子组件点击按钮</button>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+  const myApp = new Vue({
+    el:"#myApp",
+    data: {
+      name:"父组件名字！"
+    },
+    components : {
+      cpn: {
+        template : "#cpn",
+        methods: {
+          btnclick1() {
+            console.log(this.$parent.name);
+            this.$parent.showMessage();
+          }
+        },
+        components: {
+            cpn1 : {
+              template: "#cpn1",
+              methods : {
+                btnclick1() {
+                  console.log(this.$root.name);
+                  this.$root.showMessage();
+                }
+              }
+            }
+        }
+      }
+    },
+    methods : {
+      showMessage() {
+        console.log("父组件方法！");
+      }
+    }
+  });
+</script>
+</body>
+</html>

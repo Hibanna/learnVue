@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-    <cpn1></cpn1>
+    <cpn1 ref="c1"></cpn1>
     <cpn1></cpn1>
     <cpn1></cpn1>
     <mycpn></mycpn>
@@ -32,18 +32,48 @@
     },
     components : {
       cpn1 : {
-        template : "#cpn1"
+        template : "#cpn1",
+        data() {
+          return {
+            name : "c1"
+          }
+        },
+        methods: {
+          showMes() {
+            console.log("子组件1");
+          }
+        }
       },
       mycpn : {
-        template : "#cpn2"
+        template : "#cpn2",
+        data() {
+          return {
+            name : "c2"
+          };
+        },
+        methods : {
+          showMes() {
+            console.log("子组件2");
+          }
+
+        }
       }
     },
     methods : {
       btnClick() {
+/*      通过$children访问子组件时，是一个数组类型，访问其中的子组件必须通过索引值。
         console.log(this.$children);
         for (let c of this.$children) {
-          console.log(c.name);
+            console.log(c.name);
+          console.log(c.showMes());
         }
+        console.log(this.$children[3].name);
+        */
+/*        $refs的使用：
+$refs和ref指令通常是一起使用的。
+首先，我们通过ref给某一个子组件绑定一个特定的ID。
+其次，通过this.$refs.ID就可以访问到该组件了。*/
+        console.log(this.$refs.c1.name);
       }
     }
   });

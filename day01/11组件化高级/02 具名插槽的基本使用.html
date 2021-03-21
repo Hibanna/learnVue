@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--有的时候我们不仅仅是只有一个插槽 而是有好几个插槽 怎么区分呢 使用具名插槽 即 为slot 插槽添加name 属性-->
+<div id="myApp">
+    <mycpn>
+        <button slot="left">我是左边按钮</button>
+        <input type="text" slot="mid"/>
+        <button slot="right"> 我是右边按钮</button>
+    </mycpn>
+</div>
+<template id="cpn">
+    <div>
+        <slot name="left">我是左边栏目</slot>
+        <slot name="mid">我是中间栏目</slot>
+        <slot name="right">我是右边栏目</slot>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+  const myApp = new Vue({
+    el:"#myApp",
+    data: {
+      name:"test"
+    }
+  });
+</script>
+</body>
+</html>
