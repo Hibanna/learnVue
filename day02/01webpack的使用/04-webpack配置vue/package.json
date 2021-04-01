@@ -1,0 +1,21 @@
+{
+  "name": "webpack4vue2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "package-lock.json": "^1.0.0",
+    "vue": "^2.5.21"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^2.0.2",
+    "vue-loader": "^13.7.3",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
