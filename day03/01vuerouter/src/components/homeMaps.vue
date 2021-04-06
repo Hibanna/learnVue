@@ -1,6 +1,10 @@
 <template>
 <div>
-  我是homeMaps
+  <ul>
+    <li>北京</li>
+    <li>上海</li>
+    <li>广州</li>
+  </ul>
 </div>
 </template>
 

@@ -1,6 +1,12 @@
 <template>
 <div>
-  我是homeNews
+  新闻
+  <ul>
+    <li>昨天</li>
+    <li>今天</li>
+    <li>明天</li>
+  </ul>
+
 </div>
 </template>
 

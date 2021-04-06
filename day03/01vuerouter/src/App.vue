@@ -7,7 +7,10 @@
 <!--    注意path 不要写成 path:'user/123' 要写成path:'/user/123' 不带/它会向后坠变成/user/user 写了/代表他从根路径开始-->
     <router-link  :to = "{path:'/user/123',query : {name : '张三',age:'18'}}">用户</router-link >
 <!--    <button @click="linkToUser">用户</button>-->
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+
   </div>
 </template>
 <script>

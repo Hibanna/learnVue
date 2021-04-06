@@ -20,6 +20,16 @@ const routes = [
     path:"",
     redirect:"/home"
   },
+  {
+
+    /*  这种方法默认地址栏不会变成/home
+        path:"",
+        component:home*/
+    /*  这种方法默认地址栏会变成/home
+    */
+    path:"/home",
+    redirect:"/home/news"
+  },
   
 /* 以下的方式会将所有的路由组件一次性加载
  {
@@ -39,29 +49,45 @@ const routes = [
   
   {
     path:"/home",
-    component:() => import("../components/home")
+    meta : {
+      title :"首页"
+    },
+    component:() => import("../components/home"),
+    children : [
+      {
+        path:"news",
+        component:() => import("../components/homeNews")
+      },
+      {
+        path:"maps",
+        component:() => import("../components/homeMaps")
+      }
+    ]
   },
-  {
-    path:"/home/news",
-    component:() => import("../components/homeNews")
-  },
-  {
-    path:"/home/maps",
-    component:() => import("../components/homeMaps")
-  },
+
   {
     path:"/about",
+    meta : {
+      title :"关于"
+    },
     component:() => import("../components/about")
   },
  
   {
     path:"/user/:id",
+    meta : {
+      title :"用户"
+    },
     component:() => import("../components/user")
   }
 ];
 const vueRouter = new VueRouter({
   routes,
   mode : "history"
+})
+vueRouter.beforeEach((to,from,next)=>{
+  next();
+  document.title = to.matched[0].meta.title;
 })
 /*3.导出这个路由器*/
 export  default  vueRouter;
