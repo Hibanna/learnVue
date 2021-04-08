@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    new Promise((resolve, reject)=> {
+      setTimeout(data => {
+        resolve({name:"小明",age:18});
+      },1000)
+    }).then(data=> {
+      console.log("hello 第一次打印！");
+      console.log(data);
+    })
+    new Promise((resolve, reject)=> {
+      setTimeout(data => {
+        reject({name:"小明",age:18});
+      },1000)
+    }).catch(data=> {
+      console.log("hello 第一次打印！");
+      console.log(data);
+    })
+</script>
+</body>
+</html>
