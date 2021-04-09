@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // 可以按照一下的内容来了解链式调用
+  // var a = {test : function () {
+  //     console.log("wwww");
+  //     return {tes2:function () {
+  //         console.log("aaa");
+  //       }}
+  //   }};
+  // a.test().tes2();
+  /*promise 处理数据 然后传给下一个函数的简单理解*/
+/*  function aa() {
+    let data = 'aa';
+    (function () {
+      console.log(data + "bb");
+    })();
+  }
+  aa()*/
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("第一次调用");
+    },1000)
+  }).then(data=> {
+    console.log(data);
+    return new Promise((resolve, reject) => {
+      setTimeout(()=> {
+        resolve("第二次调用")
+      },1000)
+    })
+  }).then(data=> {
+    console.log(data);
+  })
+
+ new Promise((resolve, reject) => {
+   setTimeout(() => {
+     resolve("aa")
+   })
+ }).then(data=> {
+   console.log("第一次处理之前的数据是"+data);
+   return new Promise(resolve => {
+     resolve(data+"bb");
+   })
+ }).then(data=> {
+   console.log("第二次处理之前的数据"+data);
+
+ })
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("aa")
+    })
+  }).then(data=> {
+    console.log("第一次处理之前的数据是"+data);
+    /*return Promise.resolve(data+"'ccccc");*/
+    return data+"'ccccc";
+  }).then(data=> {
+    console.log("第二次处理之前的数据"+data);
+
+  })
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("aa")
+    })
+  }).then(data=> {
+    console.log("第一次处理之前的数据是"+data);
+    /* return Promise.reject(data+"'ccccc");*/
+    throw data+"dadd";
+  }).then(data=> {
+    console.log("第二次处理之前的数据"+data);
+
+  }).catch(err => {
+    console.log(err);
+  })
+</script>
+</body>
+</html>
