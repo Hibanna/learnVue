@@ -6,7 +6,7 @@
     <div v-else>
       <slot name="item-icon"></slot>
     </div>
-    <div :class="{active:active}">
+    <div :style="active?customeColor:activeColor">
       <slot name="item-text"></slot>
     </div>
   </div>
@@ -18,6 +18,12 @@ export default {
   props : {
     path:{
       type:String
+    },
+    activeColor : {
+      type : String,
+      default() {
+        return "red";
+      }
     }
   },
   data() {
@@ -26,6 +32,9 @@ export default {
   computed : {
     active() {
       return this.$route.path.indexOf(this.path) !== -1;
+    },
+    customeColor() {
+      return {color:this.activeColor}
     }
   },
   methods : {
